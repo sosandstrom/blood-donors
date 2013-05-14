@@ -15,6 +15,7 @@ import com.wadpam.gaelic.oauth.dao.DOAuth2UserDao;
 import com.wadpam.gaelic.oauth.dao.DOAuth2UserDaoBean;
 import com.wadpam.gaelic.oauth.service.ConnectionServiceImpl;
 import com.wadpam.gaelic.oauth.service.OAuth2ServiceImpl;
+import com.wadpam.gaelic.oauth.service.OAuth2UserServiceImpl;
 import com.wadpam.gaelic.oauth.web.ConnectionConverter;
 import com.wadpam.gaelic.oauth.web.OAuth2Interceptor;
 import com.wadpam.gaelic.oauth.web.OAuth2Leaf;
@@ -41,8 +42,12 @@ public class AppConfig implements GaelicConfig, SecurityConfig {
         ConnectionServiceImpl connectionService = new ConnectionServiceImpl();
         connectionService.setDao(connectionDao);
         
+        OAuth2UserServiceImpl userService = new OAuth2UserServiceImpl();
+        userService.setDao(userDao);
+        
         OAuth2ServiceImpl oauth2Service = new OAuth2ServiceImpl();
         oauth2Service.setConnectionDao(connectionDao);
+        oauth2Service.setOauth2UserService(userService);
         
         // Converters
         ConnectionConverter connectionConverter = new ConnectionConverter(userDao);
