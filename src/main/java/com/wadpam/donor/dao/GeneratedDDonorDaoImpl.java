@@ -1,4 +1,4 @@
-package com.wadpam.blood.dao;
+package com.wadpam.donor.dao;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,12 +15,12 @@ import net.sf.mardao.core.Filter;
 import net.sf.mardao.core.dao.DaoImpl;
 import net.sf.mardao.core.dao.TypeDaoImpl;
 import net.sf.mardao.core.geo.DLocation;
-import com.wadpam.blood.domain.DDonor;
+import com.wadpam.donor.domain.DDonor;
 
 /**
  * The DDonor domain-object specific finders and methods go in this POJO.
  * 
- * Generated on 2013-05-11T13:58:37.469+0700.
+ * Generated on 2013-05-25T17:35:10.015+0700.
  * @author mardao DAO generator (net.sf.mardao.plugin.ProcessDomainMojo)
  */
 public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long> 
@@ -68,39 +68,28 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
         if (COLUMN_NAME_ID.equals(name)) {
             value = domain.getId();
         }
+        // parent key?
+        else if (COLUMN_NAME_USERKEY.equals(name)) {
+            value = domain.getUserKey();
+        }
         // fields
+        else if (COLUMN_NAME_AB0.equals(name)) {
+            value = domain.getAb0();
+        }
         else if (COLUMN_NAME_CREATEDBY.equals(name)) {
             value = domain.getCreatedBy();
         }
         else if (COLUMN_NAME_CREATEDDATE.equals(name)) {
             value = domain.getCreatedDate();
         }
-        else if (COLUMN_NAME_DISPLAYNAME.equals(name)) {
-            value = domain.getDisplayName();
-        }
-        else if (COLUMN_NAME_EMAIL.equals(name)) {
-            value = domain.getEmail();
-        }
         else if (COLUMN_NAME_PHONENUMBER.equals(name)) {
             value = domain.getPhoneNumber();
-        }
-        else if (COLUMN_NAME_PROFILELINK.equals(name)) {
-            value = domain.getProfileLink();
-        }
-        else if (COLUMN_NAME_ROLES.equals(name)) {
-            value = domain.getRoles();
-        }
-        else if (COLUMN_NAME_THUMBNAILURL.equals(name)) {
-            value = domain.getThumbnailUrl();
         }
         else if (COLUMN_NAME_UPDATEDBY.equals(name)) {
             value = domain.getUpdatedBy();
         }
         else if (COLUMN_NAME_UPDATEDDATE.equals(name)) {
             value = domain.getUpdatedDate();
-        }
-        else if (COLUMN_NAME_USERNAME.equals(name)) {
-            value = domain.getUsername();
         }
         // one-to-ones
         // many-to-ones
@@ -123,29 +112,21 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
         if (COLUMN_NAME_ID.equals(name)) {
             clazz = java.lang.Long.class;
         }
+        // parent key?
+        else if (COLUMN_NAME_USERKEY.equals(name)) {
+            clazz = java.lang.Object.class;
+        }
         // fields
+        else if (COLUMN_NAME_AB0.equals(name)) {
+            clazz = java.lang.String.class;
+        }
         else if (COLUMN_NAME_CREATEDBY.equals(name)) {
             clazz = java.lang.String.class;
         }
         else if (COLUMN_NAME_CREATEDDATE.equals(name)) {
             clazz = java.util.Date.class;
         }
-        else if (COLUMN_NAME_DISPLAYNAME.equals(name)) {
-            clazz = java.lang.String.class;
-        }
-        else if (COLUMN_NAME_EMAIL.equals(name)) {
-            clazz = java.lang.String.class;
-        }
         else if (COLUMN_NAME_PHONENUMBER.equals(name)) {
-            clazz = java.lang.String.class;
-        }
-        else if (COLUMN_NAME_PROFILELINK.equals(name)) {
-            clazz = java.lang.String.class;
-        }
-        else if (COLUMN_NAME_ROLES.equals(name)) {
-            clazz = java.util.Collection.class;
-        }
-        else if (COLUMN_NAME_THUMBNAILURL.equals(name)) {
             clazz = java.lang.String.class;
         }
         else if (COLUMN_NAME_UPDATEDBY.equals(name)) {
@@ -153,9 +134,6 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
         }
         else if (COLUMN_NAME_UPDATEDDATE.equals(name)) {
             clazz = java.util.Date.class;
-        }
-        else if (COLUMN_NAME_USERNAME.equals(name)) {
-            clazz = java.lang.String.class;
         }
         // one-to-ones
         // many-to-ones
@@ -173,39 +151,28 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
         if (COLUMN_NAME_ID.equals(name)) {
             domain.setId((java.lang.Long) value);
         }
+        // parent key?
+        else if (COLUMN_NAME_USERKEY.equals(name)) {
+            domain.setUserKey((java.lang.Object) value);
+        }
         // fields
+        else if (COLUMN_NAME_AB0.equals(name)) {
+            domain.setAb0((java.lang.String) value);
+        }
         else if (COLUMN_NAME_CREATEDBY.equals(name)) {
             domain.setCreatedBy((java.lang.String) value);
         }
         else if (COLUMN_NAME_CREATEDDATE.equals(name)) {
             domain.setCreatedDate((java.util.Date) value);
         }
-        else if (COLUMN_NAME_DISPLAYNAME.equals(name)) {
-            domain.setDisplayName((java.lang.String) value);
-        }
-        else if (COLUMN_NAME_EMAIL.equals(name)) {
-            domain.setEmail((java.lang.String) value);
-        }
         else if (COLUMN_NAME_PHONENUMBER.equals(name)) {
             domain.setPhoneNumber((java.lang.String) value);
-        }
-        else if (COLUMN_NAME_PROFILELINK.equals(name)) {
-            domain.setProfileLink((java.lang.String) value);
-        }
-        else if (COLUMN_NAME_ROLES.equals(name)) {
-            domain.setRoles((java.util.Collection) value);
-        }
-        else if (COLUMN_NAME_THUMBNAILURL.equals(name)) {
-            domain.setThumbnailUrl((java.lang.String) value);
         }
         else if (COLUMN_NAME_UPDATEDBY.equals(name)) {
             domain.setUpdatedBy((java.lang.String) value);
         }
         else if (COLUMN_NAME_UPDATEDDATE.equals(name)) {
             domain.setUpdatedDate((java.util.Date) value);
-        }
-        else if (COLUMN_NAME_USERNAME.equals(name)) {
-            domain.setUsername((java.lang.String) value);
         }
         // one-to-ones
         // many-to-ones
@@ -237,9 +204,53 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
         super.setCoreProperty(core, name, value);
     }
 
+    /** Default implementation returns null, overrides for userKey parent */
+    public String getParentKeyColumnName() {
+        return COLUMN_NAME_USERKEY;
+    }
+
    // ------ END DaoImpl overrides -----------------------------
 
-        // DDonor has no parent
+        public Object getParentKey(DDonor domain) {
+            return domain.getUserKey();
+        }
+
+        public void setParentKey(DDonor domain, Object userKey) {
+            domain.setUserKey((Serializable) userKey);
+        }
+
+	// ----------------------- parent finders -------------------------------
+
+	/**
+	 * query-by method for parent field userKey
+	 * @param userKey the specified attribute
+	 * @return an Iterable of DDonors for the specified parent
+	 */
+	public final Iterable<DDonor> queryByUserKey(Object userKey) {
+            return queryIterable(false, 0, -1, userKey, null, null, false, null, false);
+	}
+	
+	/**
+	 * query-key-by method for parent field userKey
+	 * @param userKey the parent
+	 * @return an Iterable of keys to the DDonors with the specified parent
+	 */
+	public final Iterable<java.lang.Long> queryKeysByUserKey(Object userKey) {
+            return queryIterableKeys(0, -1, userKey, null, null, false, null, false);
+	}
+
+	/**
+	 * query-page-by method for parent field userKey
+	 * @param userKey the specified parent
+         * @param pageSize the number of domain entities in the page
+         * @param cursorString non-null if get next page
+	 * @return a Page of DDonors for the specified userKey
+	 */
+	public final CursorPage<DDonor, java.lang.Long> queryPageByUserKey(java.lang.Object userKey,
+            int pageSize, String cursorString) {
+            return queryPage(false, pageSize, userKey, null, null, false, null, false, cursorString);
+        }
+
 
         /**
          * @return the simple key for specified DDonor domain object
@@ -322,6 +333,38 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
 	/**
          * {@inheritDoc}
 	 */
+	public final Iterable<DDonor> queryByAb0(java.lang.String ab0) {
+            final Filter filter = createEqualsFilter(COLUMN_NAME_AB0, ab0);
+            return queryIterable(false, 0, -1, null, null, null, false, null, false, filter);
+	}
+	
+	/**
+	 * query-key-by method for attribute field ab0
+	 * @param ab0 the specified attribute
+	 * @return an Iterable of keys to the DDonors with the specified attribute
+	 */
+	public final Iterable<java.lang.Long> queryKeysByAb0(java.lang.String ab0) {
+            final Filter filter = createEqualsFilter(COLUMN_NAME_AB0, ab0);
+            return queryIterableKeys(0, -1, null, null, null, false, null, false, filter);
+	}
+
+	/**
+	 * query-page-by method for field ab0
+	 * @param ab0 the specified attribute
+         * @param pageSize the number of domain entities in the page
+         * @param cursorString non-null if get next page
+	 * @return a Page of DDonors for the specified ab0
+	 */
+	public final CursorPage<DDonor, java.lang.Long> queryPageByAb0(java.lang.String ab0,
+            int pageSize, String cursorString) {
+            final Filter filter = createEqualsFilter(COLUMN_NAME_AB0, ab0);
+            return queryPage(false, pageSize, null, null, null, false, null, false, cursorString, filter);
+        }
+
+	 
+	/**
+         * {@inheritDoc}
+	 */
 	public final Iterable<DDonor> queryByCreatedBy(java.lang.String createdBy) {
             final Filter filter = createEqualsFilter(COLUMN_NAME_CREATEDBY, createdBy);
             return queryIterable(false, 0, -1, null, null, null, false, null, false, filter);
@@ -386,58 +429,6 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
 	/**
          * {@inheritDoc}
 	 */
-	public final Iterable<DDonor> queryByDisplayName(java.lang.String displayName) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_DISPLAYNAME, displayName);
-            return queryIterable(false, 0, -1, null, null, null, false, null, false, filter);
-	}
-	
-	/**
-	 * query-key-by method for attribute field displayName
-	 * @param displayName the specified attribute
-	 * @return an Iterable of keys to the DDonors with the specified attribute
-	 */
-	public final Iterable<java.lang.Long> queryKeysByDisplayName(java.lang.String displayName) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_DISPLAYNAME, displayName);
-            return queryIterableKeys(0, -1, null, null, null, false, null, false, filter);
-	}
-
-	/**
-	 * query-page-by method for field displayName
-	 * @param displayName the specified attribute
-         * @param pageSize the number of domain entities in the page
-         * @param cursorString non-null if get next page
-	 * @return a Page of DDonors for the specified displayName
-	 */
-	public final CursorPage<DDonor, java.lang.Long> queryPageByDisplayName(java.lang.String displayName,
-            int pageSize, String cursorString) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_DISPLAYNAME, displayName);
-            return queryPage(false, pageSize, null, null, null, false, null, false, cursorString, filter);
-        }
-
-	 
-	/**
-	 * find-by method for unique attribute field email
-	 * @param email the unique attribute
-	 * @return the unique DDonor for the specified attribute
-	 */
-	public final DDonor findByEmail(java.lang.String email) {
-                Filter filter = createEqualsFilter(COLUMN_NAME_EMAIL, email);
-		return findUniqueBy(filter);
-	}
-
-	/**
-	 * find-key-by method for unique attribute field email
-	 * @param email the unique attribute
-	 * @return the unique DDonor for the specified attribute
-	 */
-	public final java.lang.Long findKeyByEmail(java.lang.String email) {
-                Filter filter = createEqualsFilter(COLUMN_NAME_EMAIL, email);
-		return findUniqueKeyBy(filter);
-	}
-	 
-	/**
-         * {@inheritDoc}
-	 */
 	public final Iterable<DDonor> queryByPhoneNumber(java.lang.String phoneNumber) {
             final Filter filter = createEqualsFilter(COLUMN_NAME_PHONENUMBER, phoneNumber);
             return queryIterable(false, 0, -1, null, null, null, false, null, false, filter);
@@ -463,102 +454,6 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
 	public final CursorPage<DDonor, java.lang.Long> queryPageByPhoneNumber(java.lang.String phoneNumber,
             int pageSize, String cursorString) {
             final Filter filter = createEqualsFilter(COLUMN_NAME_PHONENUMBER, phoneNumber);
-            return queryPage(false, pageSize, null, null, null, false, null, false, cursorString, filter);
-        }
-
-	 
-	/**
-         * {@inheritDoc}
-	 */
-	public final Iterable<DDonor> queryByProfileLink(java.lang.String profileLink) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_PROFILELINK, profileLink);
-            return queryIterable(false, 0, -1, null, null, null, false, null, false, filter);
-	}
-	
-	/**
-	 * query-key-by method for attribute field profileLink
-	 * @param profileLink the specified attribute
-	 * @return an Iterable of keys to the DDonors with the specified attribute
-	 */
-	public final Iterable<java.lang.Long> queryKeysByProfileLink(java.lang.String profileLink) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_PROFILELINK, profileLink);
-            return queryIterableKeys(0, -1, null, null, null, false, null, false, filter);
-	}
-
-	/**
-	 * query-page-by method for field profileLink
-	 * @param profileLink the specified attribute
-         * @param pageSize the number of domain entities in the page
-         * @param cursorString non-null if get next page
-	 * @return a Page of DDonors for the specified profileLink
-	 */
-	public final CursorPage<DDonor, java.lang.Long> queryPageByProfileLink(java.lang.String profileLink,
-            int pageSize, String cursorString) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_PROFILELINK, profileLink);
-            return queryPage(false, pageSize, null, null, null, false, null, false, cursorString, filter);
-        }
-
-	 
-	/**
-         * {@inheritDoc}
-	 */
-	public final Iterable<DDonor> queryByRoles(java.lang.Object roles) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_ROLES, roles);
-            return queryIterable(false, 0, -1, null, null, null, false, null, false, filter);
-	}
-	
-	/**
-	 * query-key-by method for attribute field roles
-	 * @param roles the specified attribute
-	 * @return an Iterable of keys to the DDonors with the specified attribute
-	 */
-	public final Iterable<java.lang.Long> queryKeysByRoles(java.lang.Object roles) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_ROLES, roles);
-            return queryIterableKeys(0, -1, null, null, null, false, null, false, filter);
-	}
-
-	/**
-	 * query-page-by method for field roles
-	 * @param roles the specified attribute
-         * @param pageSize the number of domain entities in the page
-         * @param cursorString non-null if get next page
-	 * @return a Page of DDonors for the specified roles
-	 */
-	public final CursorPage<DDonor, java.lang.Long> queryPageByRoles(java.lang.Object roles,
-            int pageSize, String cursorString) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_ROLES, roles);
-            return queryPage(false, pageSize, null, null, null, false, null, false, cursorString, filter);
-        }
-
-	 
-	/**
-         * {@inheritDoc}
-	 */
-	public final Iterable<DDonor> queryByThumbnailUrl(java.lang.String thumbnailUrl) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_THUMBNAILURL, thumbnailUrl);
-            return queryIterable(false, 0, -1, null, null, null, false, null, false, filter);
-	}
-	
-	/**
-	 * query-key-by method for attribute field thumbnailUrl
-	 * @param thumbnailUrl the specified attribute
-	 * @return an Iterable of keys to the DDonors with the specified attribute
-	 */
-	public final Iterable<java.lang.Long> queryKeysByThumbnailUrl(java.lang.String thumbnailUrl) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_THUMBNAILURL, thumbnailUrl);
-            return queryIterableKeys(0, -1, null, null, null, false, null, false, filter);
-	}
-
-	/**
-	 * query-page-by method for field thumbnailUrl
-	 * @param thumbnailUrl the specified attribute
-         * @param pageSize the number of domain entities in the page
-         * @param cursorString non-null if get next page
-	 * @return a Page of DDonors for the specified thumbnailUrl
-	 */
-	public final CursorPage<DDonor, java.lang.Long> queryPageByThumbnailUrl(java.lang.String thumbnailUrl,
-            int pageSize, String cursorString) {
-            final Filter filter = createEqualsFilter(COLUMN_NAME_THUMBNAILURL, thumbnailUrl);
             return queryPage(false, pageSize, null, null, null, false, null, false, cursorString, filter);
         }
 
@@ -627,26 +522,6 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
         }
 
 	 
-	/**
-	 * find-by method for unique attribute field username
-	 * @param username the unique attribute
-	 * @return the unique DDonor for the specified attribute
-	 */
-	public final DDonor findByUsername(java.lang.String username) {
-                Filter filter = createEqualsFilter(COLUMN_NAME_USERNAME, username);
-		return findUniqueBy(filter);
-	}
-
-	/**
-	 * find-key-by method for unique attribute field username
-	 * @param username the unique attribute
-	 * @return the unique DDonor for the specified attribute
-	 */
-	public final java.lang.Long findKeyByUsername(java.lang.String username) {
-                Filter filter = createEqualsFilter(COLUMN_NAME_USERNAME, username);
-		return findUniqueKeyBy(filter);
-	}
-	 
 	// ----------------------- one-to-one finders -------------------------
 
 	// ----------------------- many-to-one finders -------------------------
@@ -660,36 +535,29 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
 	/**
 	 * Persist an entity given all attributes
 	 */
-	public DDonor persist(		java.lang.Long id, 
-		java.lang.String displayName, 
-		java.lang.String email, 
-		java.lang.String phoneNumber, 
-		java.lang.String profileLink, 
-		java.util.Collection roles, 
-		java.lang.String thumbnailUrl, 
-		java.lang.String username) {
+	public DDonor persist(Object userKey,  	
+		java.lang.Long id, 
+		java.lang.String ab0, 
+		java.lang.String phoneNumber) {
 
             DDonor domain = null;
             // if primaryKey specified, use it
             if (null != id) {
-                    domain = findByPrimaryKey(id);
+                    domain = findByPrimaryKey(userKey, id);
             }
 		
             // create new?
             if (null == domain) {
                     domain = new DDonor();
+                    // set parent
+                    domain.setUserKey((java.lang.Object) userKey);
                     // generate Id?
                     if (null != id) {
                             domain.setId(id);
                     }
                     // fields
-                    domain.setDisplayName(displayName);
-                    domain.setEmail(email);
+                    domain.setAb0(ab0);
                     domain.setPhoneNumber(phoneNumber);
-                    domain.setProfileLink(profileLink);
-                    domain.setRoles(roles);
-                    domain.setThumbnailUrl(thumbnailUrl);
-                    domain.setUsername(username);
                     // one-to-ones
                     // many-to-ones
 			
@@ -698,31 +566,6 @@ public class GeneratedDDonorDaoImpl extends TypeDaoImpl<DDonor, java.lang.Long>
             return domain;
 	}
 
-
-	/**
-	 * Persists an entity unless it already exists
-	 */
-	public DDonor persist(java.lang.String email, 
-                java.lang.String displayName, 
-                java.lang.String phoneNumber, 
-                java.lang.String profileLink, 
-                java.util.Collection roles, 
-                java.lang.String thumbnailUrl, 
-                java.lang.String username) {
-            DDonor domain = findByEmail(email);
-            if (null == domain) {
-                domain = new DDonor();
-                domain.setDisplayName(displayName);
-                domain.setEmail(email);
-                domain.setPhoneNumber(phoneNumber);
-                domain.setProfileLink(profileLink);
-                domain.setRoles(roles);
-                domain.setThumbnailUrl(thumbnailUrl);
-                domain.setUsername(username);
-                persist(domain);
-            }
-            return domain;
-	}
 
 
 }

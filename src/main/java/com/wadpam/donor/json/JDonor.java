@@ -2,7 +2,7 @@
  * INSERT COPYRIGHT HERE
  */
 
-package com.wadpam.blood.json;
+package com.wadpam.donor.json;
 
 import com.wadpam.gaelic.oauth.json.JOAuth2User;
 
@@ -12,7 +12,11 @@ import com.wadpam.gaelic.oauth.json.JOAuth2User;
  */
 public class JDonor extends JOAuth2User {
 
+    private Long userId;
+
     private String phoneNumber;
+    
+    private String ab0;
 
     public String getPhoneNumber() {
         return phoneNumber;

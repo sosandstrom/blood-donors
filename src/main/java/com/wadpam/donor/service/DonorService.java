@@ -2,10 +2,10 @@
  * INSERT COPYRIGHT HERE
  */
 
-package com.wadpam.blood.service;
+package com.wadpam.donor.service;
 
-import com.wadpam.blood.dao.DDonorDaoBean;
-import com.wadpam.blood.domain.DDonor;
+import com.wadpam.donor.dao.DDonorDaoBean;
+import com.wadpam.donor.domain.DDonor;
 import com.wadpam.gaelic.crud.MardaoCrudService;
 import net.sf.mardao.core.dao.Dao;
 
