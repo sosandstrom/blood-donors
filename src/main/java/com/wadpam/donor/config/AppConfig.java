@@ -26,6 +26,7 @@ import com.wadpam.gaelic.service.AppDomainService;
 import com.wadpam.gaelic.tree.AppDomainLeaf;
 import com.wadpam.gaelic.tree.DomainNamespaceInterceptor;
 import com.wadpam.gaelic.tree.Interceptor;
+import com.wadpam.gaelic.web.MardaoPrincipalInterceptor;
 import java.util.Collection;
 import java.util.Map;
 import javax.servlet.ServletConfig;
@@ -60,8 +61,8 @@ public class AppConfig implements GaelicConfig, SecurityConfig {
         oauth2Leaf.setService(oauth2Service);
         
         // Interceptors
-        DomainSecurityInterceptor basicInterceptor = new DomainSecurityInterceptor();
-        basicInterceptor.setSecurityDetailsService(appDomainService);
+        DomainSecurityInterceptor basicInterceptor = null; // new DomainSecurityInterceptor();
+//        basicInterceptor.setSecurityDetailsService(appDomainService);
         
         DomainNamespaceInterceptor domainNamespaceInterceptor = new DomainNamespaceInterceptor();
         
@@ -71,9 +72,10 @@ public class AppConfig implements GaelicConfig, SecurityConfig {
         
         initSecurity(basicInterceptor, oauth2Interceptor);
         BUILDER.root()
-                .interceptor("api", basicInterceptor)
+//                .interceptor("api", basicInterceptor)
                 .interceptor("api", domainNamespaceInterceptor)
-                .interceptedPath("api", oauth2Interceptor)
+                .interceptor("api", oauth2Interceptor)
+                .interceptedPath("api", new MardaoPrincipalInterceptor())
                     .path(Node.PATH_DOMAIN)
                         .path("_admin")
                             .path("domain")

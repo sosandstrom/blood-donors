@@ -10,9 +10,16 @@
         <script type="text/javascript">
 
 $(function() {
-    var jConnection = registerFederated("/api/example", "username", "password", "facebook");
-    $("title").text("Home");
-    $("#h1").text("Hello " + jConnection.displayName + "!");
+    var jConnection = registerFederated("/api/kh", "", "", "facebook");
+    if (201 == jConnection.statusCode) {
+        document.location.href = "/register.html";
+    }
+    else if (200 == jConnection.statusCode) {
+        document.location.href = "/home.html";
+    }
+    else {
+        $("#h1").text("Error " + jConnection.statusCode + "!");
+    }
 });
         </script>
     </body>

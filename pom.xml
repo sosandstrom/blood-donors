@@ -18,9 +18,9 @@
     </licenses>
     
     <scm>
-        <url>https://github.com/sosandstrom/gaelic</url>
-        <connection>scm:git:git://github.com/sosandstrom/gaelic.git</connection>
-        <developerConnection>scm:git:git@github.com:sosandstrom/gaelic.git</developerConnection>
+        <url>https://github.com/sosandstrom/${project.artifactId}</url>
+        <connection>scm:git:git://github.com/sosandstrom/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:sosandstrom/${project.artifactId}.git</developerConnection>
     </scm>
 
     <developers>
