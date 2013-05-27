@@ -4,10 +4,12 @@
 
 package com.wadpam.donor.config;
 
+import com.wadpam.donor.service.BloodRegistryService;
 import com.wadpam.donor.service.DonationService;
 import com.wadpam.donor.service.DonorService;
 import com.wadpam.donor.web.DonationLeaf;
 import com.wadpam.donor.web.DonorLeaf;
+import com.wadpam.donor.web.UserDetailsLeaf;
 import com.wadpam.gaelic.GaelicConfig;
 import com.wadpam.gaelic.GaelicServlet;
 import com.wadpam.gaelic.Node;
@@ -94,13 +96,20 @@ public class AppConfig implements GaelicConfig, SecurityConfig {
         DonationService donationService = new DonationService();
         DonationLeaf donationLeaf = new DonationLeaf();
         
+        BloodRegistryService registryService = new BloodRegistryService();
+        UserDetailsLeaf userDetailsLeaf = new UserDetailsLeaf();
+        
                 BUILDER.from("_admin")
                             .path("donor")
                                 .crud("v10", donorLeaf, donorService)
                         .from("_admin")
                             .path("donation")
                                 .crud("v10", donationLeaf, donationService);
-        
+
+                BUILDER.from(Node.PATH_DOMAIN)
+                        .path("details")
+                            .crud("v10", userDetailsLeaf, registryService);
+                
         
         return BUILDER.build();
     }

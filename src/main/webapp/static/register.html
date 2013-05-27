@@ -13,10 +13,10 @@
         <div class="navbar navbar-fixed-top navbar-inverse">
             <div class="navbar-inner">
                 <div class="container">				
-                    <a id="tableName" class="brand" href="#">Loading schema...</a>
+                    <a id="tableName" class="brand" href="#">Donor Registry</a>
                     <ul class="nav">
-                        <li class="active"><a href="#all-entities" data-toggle="tab">All</a></li>
-                        <li ><a href="#create-entity" data-toggle="tab">Create</a></li>
+                        <li class="active"><a href="#register-profile" data-toggle="tab">Register your Profile</a></li>
+                        <!--<li ><a href="#create-entity" data-toggle="tab">Create</a></li>-->
                     </ul>
                 </div>	
             </div>
@@ -26,35 +26,30 @@
             <div class="tabbable">
 
                 <div class="tab-content">
-                    <div id="all-entities" class="tab-pane active">
-                        <table class="table">
-                            <thead>
-                                <tr id="allHead"></tr>
-                            </thead>
-                            <tbody id="allBody">
-                            </tbody>
-                        </table>
-                        <button id="allLoadMore" class="btn" onclick="crudLoadMore();" >Load more...</button>
-                    </div>
-
-                    <div id="create-entity" class="tab-pane">
+                    <div id="register-profile" class="tab-pane active">
                         <form id="createForm">
                             <fieldset id="createFieldset">
 
 
                             </fieldset>
                         </form>
-                        <button class="btn btn-primary" id="createButton" onclick="crudCreateEntity();" >Create</button>
+                        <button class="btn btn-primary" id="createButton" onclick="registerProfile();" >Submit</button>
                     </div>
                 </div>
             </div><!-- tabbable -->
         </div><!-- container -->
 
         <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
-
         <script src="/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
 
+        <script src="/js/crud_api.js"></script>
+        <script type="text/javascript">
+$(function() {
+    crud_Read("api/kh/details/v10", "me")
+    .success(function(data) {
+        console.log(data);
+    });
+});
         </script>
     </body>
 </html>
