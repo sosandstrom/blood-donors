@@ -36,7 +36,7 @@
 
     <!-- Specify hard-coded project properties here -->
     <properties>
-        <mardao.version>2.3.1</mardao.version>
+        <mardao.version>2.3.2-SNAPSHOT</mardao.version>
         <gae.version>1.7.7</gae.version>
         <gae.application.version>lab</gae.application.version>
         <gae.application.id>blood-kh</gae.application.id>

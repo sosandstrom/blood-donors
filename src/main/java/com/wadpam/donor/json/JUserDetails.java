@@ -17,6 +17,8 @@ public class JUserDetails extends JOAuth2User {
     private Date donorCreatedDate;
     private String phoneNumber;
     private String ab0;
+    private Integer donationCount;
+    private JDonation lastDonation;
 
     public String getDonorCreatedBy() {
         return donorCreatedBy;
@@ -48,6 +50,22 @@ public class JUserDetails extends JOAuth2User {
 
     public void setAb0(String ab0) {
         this.ab0 = ab0;
+    }
+
+    public Integer getDonationCount() {
+        return donationCount;
+    }
+
+    public void setDonationCount(Integer donationCount) {
+        this.donationCount = donationCount;
+    }
+
+    public JDonation getLastDonation() {
+        return lastDonation;
+    }
+
+    public void setLastDonation(JDonation lastDonation) {
+        this.lastDonation = lastDonation;
     }
     
 }

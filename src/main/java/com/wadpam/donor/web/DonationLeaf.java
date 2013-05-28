@@ -4,9 +4,12 @@
 
 package com.wadpam.donor.web;
 
+import com.wadpam.donor.domain.DDonation;
 import com.wadpam.donor.domain.DDonor;
+import com.wadpam.donor.json.JDonation;
 import com.wadpam.donor.json.JDonor;
-import com.wadpam.donor.service.DonorService;
+import com.wadpam.donor.service.DonationService;
+import static com.wadpam.gaelic.converter.BaseConverter.toLong;
 import com.wadpam.gaelic.converter.LongConverter;
 import com.wadpam.gaelic.tree.CrudLeaf;
 
@@ -14,31 +17,39 @@ import com.wadpam.gaelic.tree.CrudLeaf;
  *
  * @author sosandstrom
  */
-public class DonationLeaf extends CrudLeaf<JDonor, DDonor, Long, DonorService> {
+public class DonationLeaf extends CrudLeaf<JDonation, DDonation, Long, DonationService> {
     
-    static final DonorConverter CONVERTER = new DonorConverter();
+    public static final DonationConverter CONVERTER = new DonationConverter();
 
     public DonationLeaf() {
-        super(DDonor.class, Long.class, JDonor.class);
+        super(DDonation.class, Long.class, JDonation.class);
         setConverter(CONVERTER);
     }
     
-    static class DonorConverter extends LongConverter<JDonor, DDonor> {
+    public static class DonationConverter extends LongConverter<JDonation, DDonation> {
 
-        public DonorConverter() {
-            super(JDonor.class, DDonor.class);
+        public DonationConverter() {
+            super(JDonation.class, DDonation.class);
         }
 
         @Override
-        public void convertDomain(DDonor from, JDonor to) {
-            super.convertDomain(from, to);
-            to.setPhoneNumber(from.getPhoneNumber());
+        public void convertDomain(DDonation from, JDonation to) {
+            convertLongEntity(from, to);
+            to.setComment(from.getComment());
+            to.setDonationDate(toLong(from.getDonationDate()));
+            to.setHb(from.getHb());
+            // userId is populated by other converter
+            // to.setUserId(from.getUserKey());
         }
 
         @Override
-        public void convertJson(JDonor from, DDonor to) {
-            super.convertJson(from, to);
-            to.setPhoneNumber(from.getPhoneNumber());
+        public void convertJson(JDonation from, DDonation to) {
+            convertJLong(from, to);
+            to.setComment(from.getComment());
+            to.setDonationDate(toDate(from.getDonationDate()));
+            to.setHb(from.getHb());
+            // userId is populated by other converter
+            // to.setUserId(from.getUserKey());
         }
         
     }

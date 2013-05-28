@@ -4,20 +4,56 @@
 
 package com.wadpam.donor.service;
 
+import com.wadpam.donor.dao.DDonationDao;
+import com.wadpam.donor.dao.DDonorDao;
+import com.wadpam.donor.domain.DDonation;
+import com.wadpam.donor.domain.DDonor;
 import com.wadpam.donor.json.JUserDetails;
+import com.wadpam.donor.web.DonationLeaf;
 import com.wadpam.gaelic.crud.CrudService;
+import com.wadpam.gaelic.exception.NotFoundException;
 import com.wadpam.gaelic.json.JCursorPage;
+import com.wadpam.gaelic.oauth.dao.DOAuth2UserDao;
+import com.wadpam.gaelic.oauth.domain.DOAuth2User;
+import com.wadpam.gaelic.oauth.web.UserConverter;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author sosandstrom
  */
 public class BloodRegistryService implements CrudService<JUserDetails, Long>{
+    
+    static final Logger LOG = LoggerFactory.getLogger(BloodRegistryService.class);
+    
+    private DOAuth2UserDao userDao;
+    private DDonorDao donorDao;
+    private DDonationDao donationDao;
+    
+    private final UserConverter<JUserDetails, DOAuth2User> userConverter = new UserConverter(JUserDetails.class, DOAuth2User.class);
 
+    protected void convertDonor(DDonor from, JUserDetails to) {
+        to.setAb0(from.getAb0());
+        to.setDonorCreatedBy(from.getCreatedBy());
+        to.setDonorCreatedDate(from.getCreatedDate());
+        to.setPhoneNumber(from.getPhoneNumber());
+    }
+    
+    protected void convertDonation(DDonation from, JUserDetails to) {
+        to.setDonationCount(1 + (null != to.getDonationCount() ? to.getDonationCount() : 0));
+        if (null == to.getLastDonation() || 
+                to.getLastDonation().getDonationDate() < from.getDonationDate().getTime()) {
+            to.setLastDonation(DonationLeaf.CONVERTER.convertDomain(from));
+        }
+    }
+    
     @Override
     public JUserDetails createDomain() {
         return new JUserDetails();
@@ -39,8 +75,30 @@ public class BloodRegistryService implements CrudService<JUserDetails, Long>{
     }
 
     @Override
-    public JUserDetails get(String parentKeyString, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public JUserDetails get(String parentKeyString, Long userId) {
+        final Object userKey = userDao.getPrimaryKey(null, userId);
+        Map userDetails = userDao.queryByAncestorKey(userKey);
+        if (userDetails.isEmpty()) {
+            throw new NotFoundException();
+        }
+        
+        Iterator<Entry> entries = userDetails.entrySet().iterator();
+        DOAuth2User dUser = (DOAuth2User) entries.next().getValue();
+        JUserDetails body = userConverter.convertDomain(dUser);
+        
+        Entry entry;
+        while (entries.hasNext()) {
+            entry = entries.next();
+            LOG.debug("merging {}", entry);
+            if (entry.getValue() instanceof DDonor) {
+                convertDonor((DDonor) entry.getValue(), body);
+            }
+            else if (entry.getValue() instanceof DDonation) {
+                convertDonation((DDonation) entry.getValue(), body);
+            }
+        }
+        
+        return body;
     }
 
     @Override
@@ -116,6 +174,18 @@ public class BloodRegistryService implements CrudService<JUserDetails, Long>{
     @Override
     public JCursorPage<Long> whatsChanged(Date since, int pageSize, String cursorKey) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setUserDao(DOAuth2UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    public void setDonorDao(DDonorDao donorDao) {
+        this.donorDao = donorDao;
+    }
+
+    public void setDonationDao(DDonationDao donationDao) {
+        this.donationDao = donationDao;
     }
 
 }

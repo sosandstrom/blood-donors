@@ -97,6 +97,7 @@ public class AppConfig implements GaelicConfig, SecurityConfig {
         DonationLeaf donationLeaf = new DonationLeaf();
         
         BloodRegistryService registryService = new BloodRegistryService();
+        registryService.setUserDao(userDao);
         UserDetailsLeaf userDetailsLeaf = new UserDetailsLeaf();
         
                 BUILDER.from("_admin")
