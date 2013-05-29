@@ -22,6 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.Future;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -163,7 +164,23 @@ public class BloodRegistryService implements CrudService<JUserDetails, Long>{
 
     @Override
     public Long update(JUserDetails domain) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        final long userId = Long.parseLong(domain.getId());
+        Object userKey = userDao.getPrimaryKey(null, userId);
+        
+        // async style
+        Iterator<DDonor> donors = donorDao.queryByUserKey(userKey).iterator();
+        DOAuth2User user = userDao.findByPrimaryKey(userId);
+        
+        user.setDisplayName(domain.getDisplayName());
+        user.setEmail(domain.getEmail());
+        userDao.update(user);
+
+        DDonor donor = donors.hasNext() ? donors.next() : new DDonor();
+        donor.setUserKey(userKey);
+        donor.setPhoneNumber(domain.getPhoneNumber());
+        donorDao.update(donor);
+        
+        return userId;
     }
 
     @Override

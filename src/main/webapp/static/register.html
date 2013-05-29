@@ -29,6 +29,8 @@
                     <div id="register-profile" class="tab-pane active">
                         <form id="createForm">
                             <fieldset id="createFieldset">
+                                <input id="userId" type="hidden" value="" />
+                                
                                 <label for="displayName">Name</label>
                                 <input id="displayName" type="text" placeholder="First Lastname" value="" />
                                 
@@ -55,6 +57,7 @@ $(function() {
     crud_Read("api/kh/details/v10", "me")
     .success(function(data) {
         console.log(data);
+        $("#userId").val(data.id);
         $("#displayName").val(data.displayName);
         $("#phoneNumber").val(data.phoneNumber);
         $("#email").val(data.email);
@@ -63,11 +66,12 @@ $(function() {
 
 function registerDetails() {
     var body = new Object();
+    body.id = $("#userId").val();
     body.displayName = $("#displayName").val();
     body.phoneNumber = $("#phoneNumber").val();
     body.email = $("#email").val();
     
-    crud_Update("api/kh/details/v10/me", body);
+    crud_Update("api/kh/details/v10", "me", body);
 }
         </script>
     </body>
