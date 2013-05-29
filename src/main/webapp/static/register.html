@@ -29,11 +29,18 @@
                     <div id="register-profile" class="tab-pane active">
                         <form id="createForm">
                             <fieldset id="createFieldset">
-
+                                <label for="displayName">Name</label>
+                                <input id="displayName" type="text" placeholder="First Lastname" value="" />
+                                
+                                <label for="phoneNumber">Mobile</label>
+                                <input id="phoneNumber" type="tel" placeholder="+855123456789" value="" />
+                                
+                                <label for="email">Email</label>
+                                <input id="email" type="email" placeholder="first.last@host.com" value="" />
 
                             </fieldset>
                         </form>
-                        <button class="btn btn-primary" id="createButton" onclick="registerProfile();" >Submit</button>
+                        <button class="btn btn-primary" id="createButton" onclick="registerDetails();" >Submit</button>
                     </div>
                 </div>
             </div><!-- tabbable -->
@@ -48,8 +55,20 @@ $(function() {
     crud_Read("api/kh/details/v10", "me")
     .success(function(data) {
         console.log(data);
+        $("#displayName").val(data.displayName);
+        $("#phoneNumber").val(data.phoneNumber);
+        $("#email").val(data.email);
     });
 });
+
+function registerDetails() {
+    var body = new Object();
+    body.displayName = $("#displayName").val();
+    body.phoneNumber = $("#phoneNumber").val();
+    body.email = $("#email").val();
+    
+    crud_Update("api/kh/details/v10/me", body);
+}
         </script>
     </body>
 </html>
