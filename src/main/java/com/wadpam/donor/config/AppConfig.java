@@ -4,6 +4,7 @@
 
 package com.wadpam.donor.config;
 
+import com.wadpam.donor.dao.DDonorDao;
 import com.wadpam.donor.service.BloodRegistryService;
 import com.wadpam.donor.service.DonationService;
 import com.wadpam.donor.service.DonorService;
@@ -98,6 +99,7 @@ public class AppConfig implements GaelicConfig, SecurityConfig {
         
         BloodRegistryService registryService = new BloodRegistryService();
         registryService.setUserDao(userDao);
+        registryService.setDonorDao((DDonorDao) donorService.getDao());
         UserDetailsLeaf userDetailsLeaf = new UserDetailsLeaf();
         
                 BUILDER.from("_admin")

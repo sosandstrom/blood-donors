@@ -71,7 +71,10 @@ function registerDetails() {
     body.phoneNumber = $("#phoneNumber").val();
     body.email = $("#email").val();
     
-    crud_Update("api/kh/details/v10", "me", body);
+    crud_Update("api/kh/details/v10", "me", body)
+    .success(function() {
+        document.location.href = "/home.html";
+    })
 }
         </script>
     </body>
