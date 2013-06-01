@@ -4,34 +4,22 @@
 
 package com.wadpam.donor.domain;
 
+import com.wadpam.gaelic.oauth.domain.DOAuth2User;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
-import net.sf.mardao.core.Parent;
-import net.sf.mardao.core.domain.AbstractLongEntity;
 
 /**
  *
  * @author sosandstrom
  */
 @Entity
-public class DDonor extends AbstractLongEntity {
+public class DProfile extends DOAuth2User {
     
-    @Parent(kind = "DOAuth2User")
-    private Object userKey;
-
     @Basic
     private String phoneNumber;
     
     @Basic
     private String ab0;
-
-    public Object getUserKey() {
-        return userKey;
-    }
-
-    public void setUserKey(Object userKey) {
-        this.userKey = userKey;
-    }
 
     public String getAb0() {
         return ab0;
@@ -48,6 +36,5 @@ public class DDonor extends AbstractLongEntity {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
     
 }

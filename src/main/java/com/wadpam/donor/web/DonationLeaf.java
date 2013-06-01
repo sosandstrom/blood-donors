@@ -5,9 +5,9 @@
 package com.wadpam.donor.web;
 
 import com.wadpam.donor.domain.DDonation;
-import com.wadpam.donor.domain.DDonor;
+import com.wadpam.donor.domain.DProfile;
 import com.wadpam.donor.json.JDonation;
-import com.wadpam.donor.json.JDonor;
+import com.wadpam.donor.json.JProfile;
 import com.wadpam.donor.service.DonationService;
 import static com.wadpam.gaelic.converter.BaseConverter.toLong;
 import com.wadpam.gaelic.converter.LongConverter;

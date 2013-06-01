@@ -20,7 +20,7 @@ import com.wadpam.donor.domain.DDonation;
 /**
  * The DDonation domain-object specific finders and methods go in this POJO.
  * 
- * Generated on 2013-05-25T17:35:10.015+0700.
+ * Generated on 2013-06-01T09:47:45.776+0700.
  * @author mardao DAO generator (net.sf.mardao.plugin.ProcessDomainMojo)
  */
 public class GeneratedDDonationDaoImpl extends TypeDaoImpl<DDonation, java.lang.Long> 

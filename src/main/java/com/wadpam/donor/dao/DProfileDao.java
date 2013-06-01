@@ -8,7 +8,7 @@ package com.wadpam.donor.dao;
  * Generated on 2013-05-25T17:21:16.603+0700.
  * @author mardao DAO generator (net.sf.mardao.plugin.ProcessDomainMojo)
  */
-public interface DDonorDao extends GeneratedDDonorDao {
+public interface DProfileDao extends GeneratedDProfileDao {
 
 	// TODO: declare your Business Methods here
 	

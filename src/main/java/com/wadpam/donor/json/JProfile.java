@@ -4,15 +4,13 @@
 
 package com.wadpam.donor.json;
 
-import com.wadpam.gaelic.json.JBaseObject;
+import com.wadpam.gaelic.oauth.json.JOAuth2User;
 
 /**
  *
  * @author sosandstrom
  */
-public class JDonor extends JBaseObject {
-
-    private Long userId;
+public class JProfile extends JOAuth2User {
 
     private String phoneNumber;
     
@@ -26,14 +24,6 @@ public class JDonor extends JBaseObject {
         this.phoneNumber = phoneNumber;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     public String getAb0() {
         return ab0;
     }
@@ -41,6 +31,5 @@ public class JDonor extends JBaseObject {
     public void setAb0(String ab0) {
         this.ab0 = ab0;
     }
-
     
 }
